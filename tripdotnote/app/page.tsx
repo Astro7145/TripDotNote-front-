@@ -1,5 +1,6 @@
 import Summary from "@/lib/components/dashboard/Summary";
-import { Grid2, Paper, Typography } from "@mui/material";
+import VisitorChart from "@/lib/components/dashboard/VisitorChart";
+import { Grid2 } from "@mui/material";
 
 export default function Home() {
 	return (
@@ -14,7 +15,9 @@ export default function Home() {
 			<Grid2 size="grow">
 				<Summary />
 			</Grid2>
-			<Grid2 size="grow"></Grid2>
+			<Grid2 size="grow">
+				<VisitorChart />
+			</Grid2>
 		</Grid2>
 	);
 }
