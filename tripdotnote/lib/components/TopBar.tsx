@@ -92,12 +92,16 @@ export default function TopBar() {
 	};
 
 	return (
-		<AppBar position="sticky" color="inherit" sx={{ boxShadow: "none" }}>
+		<AppBar component="nav" sx={{ background: "white", boxShadow: "none" }}>
 			<Paper
 				square={true}
 				elevation={0}
 				variant="outlined"
-				sx={{ width: "100%" }}
+				sx={{
+					borderTop: "none",
+					borderRight: "none",
+					borderLeft: "none",
+				}}
 			>
 				<Container maxWidth="xl">
 					<Toolbar disableGutters>
@@ -112,7 +116,6 @@ export default function TopBar() {
 							sx={{
 								mr: 2,
 								display: { xs: "none", md: "flex" },
-								fontFamily: "monospace",
 								fontWeight: 700,
 								letterSpacing: ".3rem",
 								color: "inherit",

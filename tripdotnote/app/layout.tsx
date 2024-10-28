@@ -1,4 +1,7 @@
 import "@/app/globals.css";
+import { notoSansKr } from "@/lib/ui/fonts/NotoSansKr";
+import theme from "@/lib/ui/theme/theme";
+import { ThemeProvider } from "@mui/material/styles";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,8 +15,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body>{children}</body>
-		</html>
+		<ThemeProvider theme={theme}>
+			<html lang="en">
+				<body style={{ background: "#f3f5f7", margin: 0 }}>
+					{children}
+				</body>
+			</html>
+		</ThemeProvider>
 	);
 }
