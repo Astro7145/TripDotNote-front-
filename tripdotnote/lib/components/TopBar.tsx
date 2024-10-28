@@ -4,12 +4,12 @@ import {
 	AppBar,
 	Avatar,
 	Box,
-	Button,
 	Container,
 	Grid2,
 	IconButton,
 	Menu,
 	MenuItem,
+	Paper,
 	Tab,
 	Tabs,
 	Toolbar,
@@ -74,10 +74,6 @@ export default function TopBar() {
 		setAnchorElUser(event.currentTarget);
 	};
 
-	const handleCloseNavMenu = () => {
-		setAnchorElNav(null);
-	};
-
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
@@ -96,50 +92,74 @@ export default function TopBar() {
 	};
 
 	return (
-		<AppBar
-			position="sticky"
-			color="transparent"
-			sx={{ boxShadow: "none" }}
-		>
-			<Container maxWidth="xl">
-				<Toolbar disableGutters>
-					<AdbIcon
-						sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-					/>
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="#app-bar-with-responsive-menu"
-						sx={{
-							mr: 2,
-							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						Trip.note
-					</Typography>
-
-					<Grid2
-						sx={{
-							flexGrow: 1,
-							display: { xs: "flex", md: "none" },
-						}}
-					>
-						<IconButton
-							size="large"
-							aria-label="account of current user"
-							aria-controls="menu-appbar"
-							aria-haspopup="true"
-							onClick={handleOpenNavMenu}
-							color="inherit"
+		<AppBar position="sticky" color="inherit" sx={{ boxShadow: "none" }}>
+			<Paper
+				square={true}
+				elevation={0}
+				variant="outlined"
+				sx={{ width: "100%" }}
+			>
+				<Container maxWidth="xl">
+					<Toolbar disableGutters>
+						<AdbIcon
+							sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+						/>
+						<Typography
+							variant="h6"
+							noWrap
+							component="a"
+							href="#app-bar-with-responsive-menu"
+							sx={{
+								mr: 2,
+								display: { xs: "none", md: "flex" },
+								fontFamily: "monospace",
+								fontWeight: 700,
+								letterSpacing: ".3rem",
+								color: "inherit",
+								textDecoration: "none",
+							}}
 						>
-							<MenuIcon />
-						</IconButton>
+							Trip.note
+						</Typography>
+
+						<Grid2
+							sx={{
+								flexGrow: 1,
+								display: { xs: "flex", md: "none" },
+							}}
+						>
+							<IconButton
+								size="large"
+								aria-label="account of current user"
+								aria-controls="menu-appbar"
+								aria-haspopup="true"
+								onClick={handleOpenNavMenu}
+								color="inherit"
+							>
+								<MenuIcon />
+							</IconButton>
+							<Tabs
+								value={value}
+								onChange={handleChange}
+								id="menu-appbar"
+								aria-label="nav tabs example"
+								role="navigation"
+								textColor="inherit"
+								sx={{
+									display: Boolean(anchorElNav)
+										? "flex"
+										: "none",
+								}}
+							>
+								{menus.map((menu, idx) => (
+									<LinkTab
+										key={`menu${idx}`}
+										label={`${menu}`}
+										href="/"
+									/>
+								))}
+							</Tabs>
+						</Grid2>
 						<Tabs
 							value={value}
 							onChange={handleChange}
@@ -148,7 +168,8 @@ export default function TopBar() {
 							role="navigation"
 							textColor="inherit"
 							sx={{
-								display: Boolean(anchorElNav) ? "flex" : "none",
+								display: { xs: "none", md: "flex" },
+								flexGrow: 1,
 							}}
 						>
 							{menus.map((menu, idx) => (
@@ -159,69 +180,51 @@ export default function TopBar() {
 								/>
 							))}
 						</Tabs>
-					</Grid2>
-					<Tabs
-						value={value}
-						onChange={handleChange}
-						id="menu-appbar"
-						aria-label="nav tabs example"
-						role="navigation"
-						textColor="inherit"
-						sx={{
-							display: { xs: "none", md: "flex" },
-							flexGrow: 1,
-						}}
-					>
-						{menus.map((menu, idx) => (
-							<LinkTab
-								key={`menu${idx}`}
-								label={`${menu}`}
-								href="/"
-							/>
-						))}
-					</Tabs>
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton
-								onClick={handleOpenUserMenu}
-								sx={{ p: 0 }}
-							>
-								<Avatar
-									alt="Remy Sharp"
-									src="/static/images/avatar/2.jpg"
-								/>
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: "45px" }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{settings.map((setting) => (
-								<MenuItem
-									key={setting}
-									onClick={handleCloseUserMenu}
+						<Box sx={{ flexGrow: 0 }}>
+							<Tooltip title="Open settings">
+								<IconButton
+									onClick={handleOpenUserMenu}
+									sx={{ p: 0 }}
 								>
-									<Typography sx={{ textAlign: "center" }}>
-										{setting}
-									</Typography>
-								</MenuItem>
-							))}
-						</Menu>
-					</Box>
-				</Toolbar>
-			</Container>
+									<Avatar
+										alt="Remy Sharp"
+										src="/static/images/avatar/2.jpg"
+									/>
+								</IconButton>
+							</Tooltip>
+							<Menu
+								sx={{ mt: "45px" }}
+								id="menu-appbar"
+								anchorEl={anchorElUser}
+								anchorOrigin={{
+									vertical: "top",
+									horizontal: "right",
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: "top",
+									horizontal: "right",
+								}}
+								open={Boolean(anchorElUser)}
+								onClose={handleCloseUserMenu}
+							>
+								{settings.map((setting) => (
+									<MenuItem
+										key={setting}
+										onClick={handleCloseUserMenu}
+									>
+										<Typography
+											sx={{ textAlign: "center" }}
+										>
+											{setting}
+										</Typography>
+									</MenuItem>
+								))}
+							</Menu>
+						</Box>
+					</Toolbar>
+				</Container>
+			</Paper>
 		</AppBar>
 	);
 }
