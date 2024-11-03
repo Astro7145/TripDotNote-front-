@@ -1,5 +1,4 @@
 import "@/app/globals.css";
-import { notoSansKr } from "@/lib/ui/fonts/NotoSansKr";
 import theme from "@/lib/ui/theme/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Metadata } from "next";
