@@ -20,7 +20,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 
-const menus = ["menu1", "menu2", "menu3", "menu4"];
+const menus = ["홈", "피드", "내 블로그", "설정"];
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 

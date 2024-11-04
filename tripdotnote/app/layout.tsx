@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import theme from "@/lib/ui/theme/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Metadata } from "next";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 export const metadata: Metadata = {
 	title: "Trip.note",
@@ -17,7 +18,7 @@ export default function RootLayout({
 		<ThemeProvider theme={theme}>
 			<html lang="en">
 				<body style={{ background: "#f3f5f7", margin: 0 }}>
-					{children}
+					<AppRouterCacheProvider>{children}</AppRouterCacheProvider>
 				</body>
 			</html>
 		</ThemeProvider>
