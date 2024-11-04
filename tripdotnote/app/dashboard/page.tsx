@@ -4,7 +4,7 @@ import Summary from "@/lib/components/dashboard/Summary";
 import VisitorChart from "@/lib/components/dashboard/VisitorChart";
 import { Grid2 } from "@mui/material";
 
-export default function Home() {
+export default function Page() {
 	return (
 		<Grid2
 			container
