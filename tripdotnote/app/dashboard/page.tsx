@@ -1,3 +1,4 @@
+import PopularPosts from "@/lib/components/dashboard/PopularPosts";
 import RecentPosts from "@/lib/components/dashboard/RecentPosts";
 import Summary from "@/lib/components/dashboard/Summary";
 import VisitorChart from "@/lib/components/dashboard/VisitorChart";
@@ -17,6 +18,9 @@ export default function Home() {
 			</Grid2>
 			<Grid2 size="grow">
 				<VisitorChart />
+			</Grid2>
+			<Grid2 size="grow">
+				<PopularPosts />
 			</Grid2>
 			<Grid2 size="grow">
 				<RecentPosts />

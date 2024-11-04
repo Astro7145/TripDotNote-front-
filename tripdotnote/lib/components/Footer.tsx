@@ -12,13 +12,14 @@ export default function Footer() {
 				borderTop: "none",
 				borderRight: "none",
 				borderLeft: "none",
+				mt: 20
 			}}
 		>
 			<Grid2 container justifyContent="space-between">
 				<Grid2 container direction="column" m={5} columns={1}>
 					<Grid2 container direction="row">
 						<Grid2>
-							<VolunteerActivismIcon fontSize="large" />
+							<VolunteerActivismIcon fontSize="large" color="primary" />
 						</Grid2>
 						<Grid2
 							container
